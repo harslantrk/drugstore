@@ -1,0 +1,19 @@
+emc biliþim cms modülleri
+-üyelik modülü yapýldý.
+-kategori modülü yapýldý.
+-sayfa modülü yapýldý.
+-blog modülü yapýldý.
+-ödeme modülü
+-mail modülü
+-sms modülü
+-yönetim modülü yapýldý.
+-galeri modülü yapýldý.
+-iletiþim modülü yapýldý.
+-ürünler modülü yapýldý.
+-istatistikler / raporlar modülü
+-tasarým modülü
+-seo modülü
+-destek modülü yapýldý.
+-reklam modülü yapýldý.
+-crm modülü
+-ayarlar modülü yapýldý.

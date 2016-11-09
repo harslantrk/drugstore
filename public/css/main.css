@@ -1,0 +1,141 @@
+.dataTables_filter{
+    text-align:right;
+}
+.padding-temizle{
+    padding:0 !important;
+}
+.modal-standart .modal-header,
+.modal-standart .modal-footer {
+  border-color: #e0e0e0;
+}
+.bg-aqua,
+.callout.callout-info,
+.alert-info,
+.label-info,
+.modal-standart .modal-body {
+  background-color: #e0e0e0 !important;
+}
+.bg-aqua-active,
+.modal-standart .modal-header,
+.modal-standart .modal-footer {
+  background-color: #e0e0e0 !important;
+}
+
+@media (min-width:768px){
+    .modal-dialogOto{width: 60% !important; min-width: 600px !important; }
+}
+
+.singleFileMain{
+    float: left;
+    width: 200px;
+}
+.main label{
+color: rgba(0, 0, 0, 0.71);
+margin-left: 60px;
+}
+
+#image_preview{
+    float: left;
+    width: 100%;
+    text-align: center;
+    background-color: #FFFFFF;
+    overflow: hidden;
+    padding: 20px;
+    border: 2px dashed #ddd;
+    position: relative;
+    cursor: pointer;
+}
+
+#image_preview img{
+   width: 150px;
+}
+
+#selectSingleFile{
+    padding: 10px;
+    float: left;
+    width: 100%;
+    background-color: #fff;
+}
+
+.singleFileBtn{
+    float: left;
+    width: 100%;
+    margin: 10px 0px;
+    display: none;
+}
+
+#file {
+    float: left;
+    width: 100%;
+}
+
+#message{
+position:absolute;
+top:120px;
+left:815px;
+}
+#success
+{
+color:green;
+}
+#invalid
+{
+color:red;
+}
+#line
+{
+margin-top: 274px;
+}
+#error
+{
+color:red;
+}
+#error_message
+{
+color:blue;
+}
+.loadingSingleFile{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    top: 0;
+    left: 0;
+    display: none;
+    background: rgba(255,255,255,0.7);
+}
+.loadingSingleFile:before {
+    content: ' ';
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+.loadingSingleFile img{
+    max-width: 100px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.gallery_id, #gallery_id {display: none;}
+
+#image {
+    width: 200px;
+    height: 250px;
+    overflow: hidden;
+    cursor: pointer;
+    background: #fff;
+    border: 2px dashed #ddd;
+    text-align: center;
+}
+#image img {
+    visibility: hidden;
+}
+#image #imagetext {
+    margin: 10px 0px;
+}
+.padding-temizle-data-table .row{
+    margin:0!important;
+}
+.padding-temizle{
+    padding:0 !important;
+}
