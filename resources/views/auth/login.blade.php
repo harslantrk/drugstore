@@ -3,7 +3,7 @@
 @section('content')
 <div class="login-box">
   <div class="login-logo">
-    <a href="/"><b>EMC</b> Bilişim</a>
+    <a href="/"><b>Çözüm Lazım</b></a>
   </div><!-- /.login-logo -->
   <div class="login-box-body">
     <form role="form" method="POST" action="{{ url('/login') }}">

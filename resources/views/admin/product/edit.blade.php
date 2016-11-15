@@ -1,5 +1,4 @@
 @extends('admin.master')
-
 @section('content')
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
@@ -11,11 +10,10 @@
   </h1>
   <ol class="breadcrumb">
     <li><a href="/admin"><i class="fa fa-dashboard"></i> Anasayfa</a></li>
-    <li><a href="/admin/users"><i class="fa fa-dashboard active"></i> Ürün Düzenle</a></li>
+    <li><a href="/admin/product"><i class="fa fa-dashboard active"></i> Ürün Düzenle</a></li>
   </ol>
 </section>
 <!-- Main content -->
-
 <section class="content">
 <div class="row">
 <div class="col-lg-8 col-md-8">
@@ -34,10 +32,7 @@
       </div>
       <div class="form-group">
             <label for="exampleInputEmail1">Ürün İçeriği</label>
-            <textarea name="content" class="textarea product-text" placeholder="" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-              {{$product->content}}
-            </textarea>
-          
+            <textarea name="content" class="textarea product-text" placeholder="" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$product->content}}</textarea>
       </div>
       <div class="form-group">
         <div class="row">
@@ -53,14 +48,11 @@
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">SEO Açıklama</label>
-        <textarea type="text" class="textarea" style="width:100%;height:250px;resize:none;" id="exampleInputEmail1" placeholder="" name="description">
-          {{$product->description}}
-        </textarea>
+        <textarea type="text" class="textarea" style="width:100%;height:250px;resize:none;" id="exampleInputEmail1" placeholder="" name="description">{{$product->description}}</textarea>
       </div>
 
       <div class="form-group">
         <label for="exampleInputEmail1">Ürün Galerisi</label>
-        
       </div>
 
       </div>
@@ -97,18 +89,13 @@
         <div class="form-group">
           <h3 class="box-title">Etiketler</h3>
           <p><small>Kelimeler Arasına Virgül Koyunuz</small></p>
-          <textarea type="text" class="form-control" style="width:100%;height:150px;overflow: hidden; resize:none;"  id="exampleInputEmail1" placeholder="" name="tags">
-            {{$product->tags}}
-          </textarea>
+          <textarea type="text" class="form-control" style="width:100%;height:150px;overflow: hidden; resize:none;"  id="exampleInputEmail1" placeholder="" name="tags">{{$product->tags}}</textarea>
         </div>
         <div class="form-group">
           <h3 class="box-title">Öne Çıkarılan Görsel</h3>
           <img src="{{$product->image}}" class="img-responsive">
           <input name="image" type="file" id="exampleInputFile">
-          
         </div>
-        
-
     </form>
 
   </div><!-- /.box -->
@@ -119,15 +106,11 @@
 <script type="text/javascript">
   
 function productFormSave (){
-  $("#productForm").attr("action","/admin/update-product");
+  $("#productForm").attr("action","/admin/product/update-product");
 }
-
 function productFormDraft (){
-  $("#productForm").attr("action","/admin/update-draft");
+  $("#productForm").attr("action","/admin/product/update-draft");
 }
 </script>
-
-
-
 </div><!-- /.content-wrapper -->
 @endsection

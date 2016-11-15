@@ -1,6 +1,11 @@
 @extends('admin.master')
 
 @section('content')
+  @if($deleg['u'] != 1 && $deleg['d'] != 1)
+    <script type="text/javascript">
+      alert('Sadece Görüntüleme Yetkisine Sahipsiniz !');
+    </script>
+  @endif
 <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -34,23 +39,23 @@
                         <td>Kategori</td>
                         <td>Ekleyen</td>
                         <td>Son Güncelleme</td>
-                        <td rowspan="2">İşlemler</td>
+                        <td>İşlemler</td>
                       </tr>
                     </thead>
                     <tbody>
                       @foreach($products as $product)
-                      
                       <tr>
                         <th><a href="/admin/product/edit-product/{{$product->id}}">{{$product->id}}</a></th>
                         <th><a href="/admin/product/edit-product/{{$product->id}}">{{$product->name}}</a></th>
-                        <th><button class="btn btn-danger btn-xs" style="border-radius: 25px; width:60px;">{{$product->price}} TL</button></th>
+                        <th><label class="label-danger">{{$product->price}} TL</label></th>
                         <th>{{$product->category_id}}</th>
                         <th>{{$product->username}}</th>
                         <th>{{$product->updated_at}}</th>
-                        <th><a href="/admin/product/edit-product/{{$product->id}}" class="btn btn-success btn-xs">Güncelle</a></th>
-                        <th><a href="/admin/product/delete-product/{{$product->id}}" class="btn btn-danger btn-xs" >Sil</a></th>
+                        <th>
+                          @if($deleg['u'] == 1)<a title="Güncelle" href="/admin/product/edit-product/{{$product->id}}" class="btn btn-success btn-xs"><i class="fa fa-upload"></i></a>@endif
+                          @if($deleg['d'] == 1)<a title="Sil" href="/admin/product/delete-product/{{$product->id}}" class="btn btn-danger btn-xs"><i class="fa fa-trash"></i></a> @endif
+                        </th>
                       </tr>
-
                       @endforeach
                       <!-- Modal -->
                     
@@ -66,6 +71,18 @@
           </div><!-- /.row -->
         </section><!-- /.content -->
     </div><!-- /.content-wrapper -->
-    
-      
+
+  <script>
+    $(function () {
+      $("#example1").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true
+      });
+    });
+  </script>
 @endsection

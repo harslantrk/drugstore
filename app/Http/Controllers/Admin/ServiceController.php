@@ -84,7 +84,7 @@ class ServiceController extends Controller
     public function edit($id)
     {
         if($this->read==0 || $this->update==0){
-            return redirect()->action('Admin\HomeController@index');
+            return redirect()->back();
         }
         $allService = Service::all();
         $services = Service::find($id);

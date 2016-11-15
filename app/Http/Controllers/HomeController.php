@@ -41,7 +41,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        
+
         $hak=Page::where('status','1')->get();
         $blog=Blog::where('status','1')->get();
         $services=Service::where('status','1')->orderBy('priority','asc')->limit(9)->get();

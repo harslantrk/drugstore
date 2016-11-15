@@ -36,8 +36,7 @@ Route::get('/iletisim','ContactController@index');
 Route::get('/hakkimizda','AboutController@index');
 Route::get('/hizmetlerimiz','ServicesController@index');
 Route::get('/referanslarimiz','ReferenceController@index');
-Route::get('/{page}','HomeController@showPage');
-/*
+/*F
  * Admin Sayfaları
  */
 Route::auth();
@@ -285,6 +284,17 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Modüller Modülü Son
 
+    //Hastalar Modülü Başlangıç
+    Route::get('/admin/patient','Admin\PatientController@index'); //Tüm Hastalar Sayfası
+    Route::get('/admin/patient/create','Admin\PatientController@create'); //Yeni Hasta Ekleme
+    Route::get('/admin/patient/edit/{id}','Admin\PatientController@edit');//Hasta Düzenleme
+    Route::get('/admin/patient/delete/{id}','Admin\PatientController@delete'); //Hasta Silme
+
+    Route::post('/admin/patient/save','Admin\PatientController@save'); //Hastayı Kaydetme
+    Route::post('/admin/patient/update','Admin\PatientController@update'); //Hastayı Güncelleme
+
+    //Hastalar Modülü Bitiş
 });
+
 
 

@@ -69,9 +69,9 @@
                         <div class="col-md-12 center">
 
                             <h2 class="mb-xl"><strong>Hakkımızda</strong></h2>
-                            <p><?php echo str_limit($hak[0]->content,350); ?></p>
+                            <p></p>
 
-                            <a class="btn btn-borders btn-default mr-xs mb-sm" href="/<?=$hak[0]->slug?>">Devamı</a>
+                            <a class="btn btn-borders btn-default mr-xs mb-sm" href="/">Devamı</a>
                         </div>
                     </div>
                 </div></div>

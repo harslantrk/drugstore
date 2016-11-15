@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf_token" content="{{ csrf_token() }}" />
-    <title>EMC Bilişim</title>
+    <title>Çözüm Lazım</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -217,9 +217,9 @@
         <!-- Logo -->
         <a href="/" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>EMC</b>EMC</span>
+          <span class="logo-mini"><b>Çözüm Lazım</b></span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b>EMC</b>Bilişim</span>
+          <span class="logo-lg"><b>Çözüm Lazım</b></span>
         </a>
         <!-- Header Navbar: style can be found in header.less -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -667,7 +667,7 @@
 
       $('.phone_mask').inputmask('0(999)999-9999');
 
-      $("#users_table, #intro_table, #popup_table, #pagein_table").DataTable({
+      $("#users_table, #intro_table, #popup_table, #pagein_table,#hastalar_table").DataTable({
           "language": {
               "emptyTable": "Hiç bir veri bulunamadı",
               "info": "Gösterim _START_ ile _END_ arası _TOTAL_ toplam veri",

@@ -9,20 +9,38 @@ use Auth;
 use App\User;
 use App\Product;
 use App\Http\Controllers\Controller;
+use App\Helpers\Helper;
 
 
 class ProductController extends Controller
 {
+    public function __construct(Request $request)
+    {
+        $url = $request->path();
+        Helper::sessionReload();
+        $sess= Helper::shout($url);
+        $this->read=$sess['r'];
+        $this->update=$sess['u'];
+        $this->add=$sess['a'];
+        $this->delete=$sess['d'];
+        $this->sess=$sess;
+    }
     //Tüm Ürünler
     public function index(){
+        if($this->read==0){
+            return redirect()->action('Admin\HomeController@index');
+        }
     	//$products = Product::all();
         $products = DB::table('products')->join('users', 'products.author', '=', 'users.id')
                                 ->select('products.*','users.name as username')
                                 ->get();
-    	return view('admin.product.index')->with(['products' => $products]);
+    	return view('admin.product.index')->with(['products' => $products,'deleg' => $this->sess]);
     }
     //Yeni Ürünler
     public function create(){
+        if($this->read==0 || $this->add==0){
+            return redirect()->action('Admin\HomeController@index');
+        }
     	return view('admin.product.create');
     }
 
@@ -44,6 +62,9 @@ class ProductController extends Controller
     }
 
     public function edit(Request $request){
+        if($this->read==0 || $this->update==0){
+            return redirect()->back();
+        }
     	$id = $request->id;
     	$product = Product::find($id);
     	return view('admin.product.edit')->with(['product' => $product]);
@@ -66,6 +87,9 @@ class ProductController extends Controller
     }
     // Ürün Silme Fonksiyonu
     public function delete(Request $request){
+        if ($this->read==0 || $this->delete==0) {
+            return redirect()->action('Admin\HomeController@index');
+        }
     	$id = $request->id;
     	$productData = Product::find($id);
 		$productData->delete();
