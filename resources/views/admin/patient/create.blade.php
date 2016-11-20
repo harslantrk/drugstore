@@ -142,6 +142,45 @@
                             </div><!-- /.box-body -->
                         </div><!-- /. box -->
                     </div><!-- /.col -->
+                    <div class="col-sm-12">
+                        <div class="box box-primary">
+                            <div class="box-header with-border">
+                                <h3 class="box-title text-danger">Adres Bilgileri</h3>
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Veli TC Kimlik No
+                                    </div>
+                                    <input class="form-control" type="text" name="parent_tc" data-inputmask='"mask": "99999999999"' data-mask placeholder="Veli Tc Kimlik No">
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Veli Adı
+                                    </div>
+                                    <input class="form-control" type="text" name="parent_name">
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Veli Telefon
+                                    </div>
+                                    <input class="form-control" type="text" name="parent_phone" data-inputmask='"mask": "09999999999"' data-mask>
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Yakınlık Derecesi
+                                    </div>
+                                    <select class="form-control select2" name="parent_kinship" style="width: 100%;">
+                                        <option value="1"  selected="selected">Eşi</option>
+                                        <option value="2">Anne</option>
+                                        <option value="3">Baba</option>
+                                        <option value="4">Çocuğu</option>
+                                        <option value="5">Diğer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
                     <div class="col-md-12">
                         <div class="box-footer">
                             <div class="pull-right">

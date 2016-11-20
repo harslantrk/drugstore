@@ -12,7 +12,7 @@ use Session;
 use Laracasts\Flash\Flash;
 use App\Helpers\Helper;
 use Carbon\Carbon;
-use App\Patient;
+use App\Patient; // Silinecek !!!
 
 class PatientController extends Controller
 {

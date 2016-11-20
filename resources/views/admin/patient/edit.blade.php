@@ -31,7 +31,6 @@
                                 <h3 class="box-title">Hasta Bilgileri</h3>
                             </div><!-- /.box-header -->
                             <div class="box-body">
-
                                 <div class="input-group form-group">
                                     <div class="input-group-addon">
                                         Adı - Soyadı
@@ -44,14 +43,12 @@
                                     </div>
                                     <input class="form-control" type="text" name="tc_no" data-inputmask='"mask": "99999999999"' data-mask placeholder="Tc Kimlik No" value="{{$patient->tc_no}}">
                                 </div>
-
                                 <div class="input-group form-group">
                                     <div class="input-group-addon">
                                         Telefon
                                     </div>
                                     <input class="form-control" type="text" name="phone" data-inputmask='"mask": "09999999999"' data-mask value="{{$patient->phone}}">
                                 </div>
-
                                 <div class="input-group form-group">
                                     <div class="input-group-addon">
                                         Doğum Tarihi
@@ -134,6 +131,41 @@
                                     <div class="kv-main"></div>
                                 </div>
                             </div><!-- /.box-body -->
+                            <div class="box-header with-border">
+                                <h3 class="box-title text-danger">Veli Bilgileri</h3>
+                            </div><!-- /.box-header -->
+                            <div class="box-body">
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Veli TC Kimlik No
+                                    </div>
+                                    <input class="form-control" type="text" name="parent_tc" data-inputmask='"mask": "99999999999"' data-mask placeholder="Veli Tc Kimlik No" value="{{$patient->parent_tc}}">
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Veli Adı
+                                    </div>
+                                    <input class="form-control" type="text" name="parent_name" value="{{$patient->parent_name}}">
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Veli Telefon
+                                    </div>
+                                    <input class="form-control" type="text" name="parent_phone" data-inputmask='"mask": "09999999999"' data-mask value="{{$patient->parent_phone}}">
+                                </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Yakınlık Derecesi
+                                    </div>
+                                    <select class="form-control select2" name="parent_kinship" style="width: 100%;">
+                                        <option value="1" @if($patient->parent_kinship == 1) selected="selected" @endif>Eşi</option>
+                                        <option value="2" @if($patient->parent_kinship == 2) selected="selected" @endif>Anne</option>
+                                        <option value="3" @if($patient->parent_kinship == 3) selected="selected" @endif>Baba</option>
+                                        <option value="4" @if($patient->parent_kinship == 4) selected="selected" @endif>Çocuğu</option>
+                                        <option value="5" @if($patient->parent_kinship == 5) selected="selected" @endif>Diğer</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="box-footer">
                                 <input type="hidden" name="id" value="{{$patient->id}}">
                                 <div class="pull-right">

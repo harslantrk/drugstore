@@ -29,6 +29,10 @@ class CreatePatientsTable extends Migration
             $table->string('educational');
             $table->text('detail');
             $table->integer('social_insurance');
+            $table->string('parent_tc');
+            $table->string('parent_name');
+            $table->string('parent_phone');
+            $table->integer('parent_kinship');
             $table->timestamps();
         });
     }

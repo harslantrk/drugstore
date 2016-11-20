@@ -292,8 +292,18 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/admin/patient/save','Admin\PatientController@save'); //Hastayı Kaydetme
     Route::post('/admin/patient/update','Admin\PatientController@update'); //Hastayı Güncelleme
-
     //Hastalar Modülü Bitiş
+
+    //Sms Modülü Başlangıç
+    Route::get('/admin/sms','Admin\SmsController@index'); //Tüm Hastalar Sayfası
+    Route::get('/admin/sms/create','Admin\SmsController@create'); //Yeni Hasta Ekleme
+    Route::get('/admin/sms/edit/{id}','Admin\SmsController@edit');//Hasta Düzenleme
+    Route::get('/admin/sms/delete/{id}','Admin\SmsController@delete'); //Hasta Silme
+
+    Route::post('/admin/sms/create','Admin\SmsController@createPost'); //Sms Atma Tablodan Seçerek
+    Route::post('/admin/sms/elle','Admin\SmsController@createElle'); //Sms Atma Elle Numara Girerek
+    Route::post('/admin/sms/save','Admin\SmsController@save'); //Hastayı Kaydetme
+    //Sms Modülü Bitiş
 });
 
 
