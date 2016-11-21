@@ -48,8 +48,11 @@
                                                 <label class="control-label col-sm-2">Kalan Sms :</label>
                                                 <span class="label label-danger"> 5000 Adet</span>
                                             </div>
-                                            <div class="form-group text-center">
-                                                <span class="text-bold">Bu Alandan Seçtiğiniz Kişilere SMS Gönderebilirsiniz.</span>
+                                            <div class="form-group">
+                                                <div class="col-sm-3"></div>
+                                                <div class="callout callout-danger col-sm-6 text-center">
+                                                    <strong>Bu Alandan Seçtiğiniz Kişilere SMS Gönderebilirsiniz.</strong>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-sm-2">Kalan Karakter :</label>
@@ -117,8 +120,11 @@
                                                 <label class="control-label col-sm-2">Kalan Sms :</label>
                                                 <span class="label label-danger"> 5000 Adet</span>
                                             </div>
-                                            <div class="form-group text-center">
-                                                <span class="text-bold">Bu Alandan Seçtiğiniz Kişilere SMS Gönderebilirsiniz.</span>
+                                            <div class="form-group">
+                                                <div class="col-sm-3"></div>
+                                                <div class="callout callout-danger col-sm-6 text-center">
+                                                    <strong>Bu Alandan Numarasını Yazdığınız Kişiye Sms Gönderebilirsiniz !</strong>
+                                                </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="control-label col-sm-2">Kalan Karakter :</label>
@@ -143,49 +149,31 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane" id="tum_borc">
-                                    <form class="form-horizontal">
-                                        <div class="form-group">
-                                            <label for="inputName" class="col-sm-2 control-label">Name</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputName" placeholder="Name">
+                                    <form class="form-horizontal" method="post" action="{{URL::to('/admin/sms/create')}}">
+                                        {!! csrf_field() !!}
+                                        <div class="box-body">
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2">Kalan Sms :</label>
+                                                <span class="label label-danger"> 5000 Adet</span>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-                                            <div class="col-sm-10">
-                                                <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputName" class="col-sm-2 control-label">Name</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-                                            <div class="col-sm-10">
-                                                <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                                    </label>
+                                            <div class="form-group">
+                                                <div class="col-sm-3"></div>
+                                                <div class="callout callout-danger col-sm-6 text-center">
+                                                    <strong>Bu Alandan Sistemde Borcu Bulunan Herkese SMS Gönderebilirsiniz.</strong>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-sm-offset-2 col-sm-10">
-                                                <button type="submit" class="btn btn-danger">Submit</button>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2">Kalan Karakter :</label>
+                                                <label class="control-label" id="kalan_karakter_3">160</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-2">Mesajınız :</label>
+                                                <div class="col-sm-10">
+                                                    <textarea class="form-control" onkeyup="sms_gonder_elle()" id="sms_tum_borc" name="sms_detail_tum_borc" rows="5" style="resize: none;">Hasta bezi tarihiniz sona ermiştir. Bez Reçetenizi yazdırıp eczaneye geliniz.</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group text-center">
+                                                <button type="submit" id="btn_tum_borc" class="btn btn-primary"><i class="fa fa-envelope-o"></i> Sms Gönder</button>
                                             </div>
                                         </div>
                                     </form>

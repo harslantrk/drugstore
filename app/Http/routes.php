@@ -84,18 +84,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     /*Blog Modülü Bitiş*/
 
-    
-
     /*Hizmetler Modülü Başlangıç*/
 
     Route::get('/admin/services','Admin\ServiceController@index');
-
     Route::get('/admin/services/create','Admin\ServiceController@create');
     Route::get('/admin/services/edit/{id}','Admin\ServiceController@edit');
     Route::get('/admin/services/delete/{id}','Admin\ServiceController@delete');
     Route::post('/admin/services/save','Admin\ServiceController@save');
     Route::post('/admin/services/update','Admin\ServiceController@update');
-
 
     /*Hizmetler Modülü Bitiş*/
 
@@ -109,7 +105,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/our-client/save','Admin\OurClientsController@save');
     Route::post('/admin/our-client/update','Admin\OurClientsController@update');
 
-
     /*Müşteri Yorumları Modülü Bitiş*/
 
     /*Referanslarımız Modülü Başlangıç*/
@@ -122,9 +117,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/reference/save','Admin\ReferenceController@save');
     Route::post('/admin/reference/update','Admin\ReferenceController@update');
 
-
     /*Referanslarımız Modülü Bitiş*/
-
 
     /*İletişim Modülü Başlangıç*/
 
@@ -146,10 +139,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/slider/update','Admin\SliderController@update');
 
     /*İletişim Modülü Bitiş*/
-
-
-
-
 
 	/*Reklam Modülü Başlangıcı*/
 	// Google Analytics Kodu ekleme alanı
@@ -304,6 +293,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/sms/elle','Admin\SmsController@createElle'); //Sms Atma Elle Numara Girerek
     Route::post('/admin/sms/save','Admin\SmsController@save'); //Hastayı Kaydetme
     //Sms Modülü Bitiş
+
+    Route::post('/admin/users/resizeImagePost','Admin\UserController@resizeImagePost');
 });
 
 

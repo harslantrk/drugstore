@@ -44,24 +44,9 @@ class PatientController extends Controller
     }
     public function save(Request $requests){
         try {
-            $patient = new Patient();
-            $patient->status = 1;
-            $patient->name = $requests->input('name');
-            $patient->tc_no = $requests->input('tc_no');
-            $patient->phone = $requests->input('phone');
-            $patient->birthdate = $requests->input('birthdate');
-            $patient->street = $requests->input('street');
-            $patient->district = $requests->input('district');
-            $patient->city = $requests->input('city');
-            $patient->apartment = $requests->input('apartment');
-            $patient->post_code = $requests->input('post_code');
-            $patient->school_name = $requests->input('school_name');
-            $patient->class = $requests->input('class');
-            $patient->educational = $requests->input('educational');
-            $patient->detail = $requests->input('detail');
-            $patient->social_insurance = $requests->input('social_insurance');
-
-            $patient->save();
+            $data = $requests->all();
+            $data['status'] = 1;
+            Patient::create($data);
             Flash::message('Hasta başarılı bir şekilde eklendi.','success');
             return $this->index();
         } catch (\Exception $e) {

@@ -19,14 +19,30 @@
 		  <h3 class="box-title">Üyelik Güncelleme</h3>
 		</div><!-- /.box-header -->
 		<!-- form start -->
-		<form role="form" method="post" action="/admin/users/update">
-		{!! csrf_field() !!}
-		  <div class="box-body">
-		    <div class="form-group">
-              <label for="exampleInputFile">Profil Resmi</label>
-              <input type="file" id="exampleInputFile" name="picture">
-              <img src="{{$users->picture}}">
-            </div>
+		<form class="form-horizontal" action="/admin/users/resizeImagePost" method="post" enctype="multipart/form-data">
+			{!! csrf_field() !!}
+				<div class="box-body">
+					<div class="col-sm-3 col-xs-6">
+						<div class="form-group">
+							<input class="btn" type="file" name="image" id="image">
+						</div>
+						<div class="form-group">
+							<div class="col-sm-10">
+								<button type="submit" class="btn btn-success">Resim Yükle</button>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-9 col-xs-6">
+						@if(Auth::user()->picture)
+							<img style="margin: 0px;" class="profile-user-img img-responsive" src="{{URL::to(Auth::user()->picture)}}" alt="User profile picture">
+						@endif
+					</div>
+				</div>
+			<input type="hidden" name="id" value="{{$users->id}}"/>
+		</form>
+			  <form role="form" method="post" action="/admin/users/update">
+				  {!! csrf_field() !!}
+				  <div class="box-body">
 		    <div class="form-group">
 		      <label for="exampleInputName1">İsim Soyisim  <small style="color:red;">(Zorunlu)</small></label>
 		      <input type="text" class="form-control" id="exampleInputName1" name="name" placeholder="İsim soyisim giriniz!" value="{{$users->name}}" required>

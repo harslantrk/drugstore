@@ -9,6 +9,7 @@ use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
 use App\Helpers\Helper;
 use Auth;
+use Image;
 
 class UserController extends Controller
 {
@@ -157,5 +158,25 @@ class UserController extends Controller
         Flash::message('Kullanıcı başarılı bir şekilde silindi.','danger');
 
         return redirect()->action('Admin\UserController@index');
+    }
+    public function resizeImagePost(Request $request)
+    {
+        $this->validate($request, [
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $image = $request->file('image');
+        $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
+
+        $destinationPath = public_path('/uploads/');
+        $img = Image::make($image->getRealPath());
+        $img->save($destinationPath.$input['imagename']);
+
+        $user = User::findOrFail($request->id);
+        $user->picture ='/uploads/'.$input['imagename'];
+        $user->save();
+
+        return back()
+            ->with('success','Resim Başarı İle Yüklenmiştir');
     }
 }
