@@ -38,7 +38,7 @@
                             <h3 class="box-title">Hastalar</h3>
                         </div><!-- /.box-header -->
                         <div class="box-body">
-                            <table id="hastalar_table" class="table table-bordered table-striped table-responsive">
+                            <table id="hastalar_table" class="table table-bordered table-hover table-responsive">
                                 <thead>
                                 <tr>
                                     <th>Sıra</th>

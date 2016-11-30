@@ -295,6 +295,20 @@ Route::group(['middleware' => ['auth']], function () {
     //Sms Modülü Bitiş
 
     Route::post('/admin/users/resizeImagePost','Admin\UserController@resizeImagePost');
+
+    //Bez Raporlar Başlangıc
+    Route::get('/admin/bez/reports','Admin\BezController@index'); //Bez Kullananları Cekme
+    Route::get('/admin/bez/reports/show/{id}','Admin\BezController@show'); //Kullanıcının Raporlarını Listeleme
+    Route::get('/admin/bez/reports/show/receipt/{report_id}/{patient_id}','Admin\BezController@receiptShow'); //Rapor İçindeki Reçeteleri Listeleme
+    Route::get('/admin/bez/reports/show/receipt/payment/{receipt_id}/{patient_id}','Admin\BezController@paymentShow'); //Reçete İçindeki Ödemeleri Listeleme
+
+    Route::post('/admin/bez/reports/Reportsave','Admin\BezController@BezReportSave'); //Bez İçin Rapor Kaydetme
+    Route::post('/admin/bez/reports/ReceiptSave','Admin\BezController@BezReceiptSave'); //Bez İçin Reçete Kaydetme
+    Route::post('/admin/bez/reports/Paymentsave','Admin\BezController@Paymentsave'); //Reçete İçin Ödeme Kaydetme
+    Route::post('/admin/bez/reports/reportGetir','Admin\BezController@reportGetir'); //Reçete İçin Raporları Getirme Ajax
+    Route::post('/admin/bez/reports/PaymentGetir','Admin\BezController@PaymentGetir'); //Ödeme İçin Reçete Getirme Ajax
+
+    //Bez  Raporlar Bitiş
 });
 
 

@@ -391,7 +391,7 @@
               <!-- User Account: style can be found in dropdown.less -->
               <li class="dropdown user user-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  @if(Auth::user()->picture)
+                  @if(Auth::user()->picture != '')
                     <img src="{{Auth::user()->picture}}" class="user-image" alt="User Image">
                   @else
                     <img src="/img/user2-160x160.jpg" class="user-image" alt="User Image">
@@ -401,7 +401,7 @@
                 <ul class="dropdown-menu">
                   <!-- User image -->
                   <li class="user-header">
-                    @if(Auth::user()->picture)
+                    @if(Auth::user()->picture != '')
                       <img src="{{Auth::user()->picture}}" class="img-circle" alt="User Image">
                     @else
                       <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
@@ -425,7 +425,7 @@
                   <!-- Menu Footer-->
                   <li class="user-footer">
                     <div class="pull-left">
-                      <a href="#" class="btn btn-default btn-flat">Profil</a>
+                      <a href="/admin/users/edit/{{Auth::user()->id}}" class="btn btn-default btn-flat">Profil</a>
                     </div>
                     <div class="pull-right">
                       <a href="/logout" class="btn btn-default btn-flat">Çıkış</a>
@@ -448,7 +448,7 @@
           <!-- Sidebar user panel -->
           <div class="user-panel">
             <div class="pull-left image">
-              @if(Auth::user()->picture)
+              @if(Auth::user()->picture != '')
                 <img src="{{Auth::user()->picture}}" class="img-circle" alt="User Image">
                 @else
                 <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
@@ -917,91 +917,6 @@
         });
       <!--/Data Table Scripts-->
     </script>
-    <script type="text/javascript">
-       var map, marker;
-    var markers = [];
-    var inputLat = '#lat';
-    var inputLng = '#lng';
-      var beginLat = {{$allSetting->latitude}};
-      var beginLng =  {{$allSetting->longitude}};
-    var contMap = '#my_map';
-    var geocoder = new google.maps.Geocoder();
-      var latlng = new google.maps.LatLng(beginLat, beginLng);
-      var myOptions =
-          {
-          zoom: 14,
-          center: latlng,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
 
-      var map = new google.maps.Map(document.getElementById("my_map"), myOptions);
-    placeMarker(latlng);
-
-
-    function placeMarker(location)
-      {
-      // clear previous markers
-      if(markers)
-      {
-        for(i in markers)
-        {
-        markers[i].setMap(null);
-        }
-      }
-      // create a new marker
-      var marker = new google.maps.Marker({
-        position : location,
-        map : map,
-        draggable : true
-      });
-
-      // add created marker to a global array to be tracked and removed later
-      markers.push(marker);
-
-      map.setCenter(location);
-
-      // extract lat and lng from LatLng location and put values in form
-      $(inputLat).val(location.lat());
-      $(inputLng).val(location.lng());
-
-      /*
-       * when marker is dragged, extract coordinates,
-       * change form values and proceed with geocoding
-       */
-      google.maps.event.addListener(marker, 'dragend', function(){
-        var coords = marker.getPosition();
-        $(inputLat).val(coords.lat());
-        $(inputLng).val(coords.lng());
-
-        geocodeCoords(coords);
-        map.setCenter(coords);
-
-         if($(inputLat).val().trim() == '' ||
-        $(inputLng).val().trim() == '')
-        {
-        alert('No coordinates or incomplete coordinates specified');
-        }
-        else
-        {
-        var lat = $(inputLat).val();
-        var lng = $(inputLng).val();
-        var location = new google.maps.LatLng(lat, lng);
-
-
-        }
-      });
-           }
-        function geocodeLocation(address)
-        {
-        geocoder.geocode({'address' : address}, function(result, status){
-          // this returns a latlng
-          var location = result[0].geometry.location;
-          map.setCenter(location);
-
-          // replace markers
-          placeMarker(location);
-        });
-        }
-    </script>
   </body>
 </html>

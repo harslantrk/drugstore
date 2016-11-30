@@ -40,12 +40,24 @@ class PatientController extends Controller
         if($this->read==0 || $this->add==0){
             return redirect()->action('Admin\HomeController@index');
         }
-        return view('admin.patient.create');
+        $reports_type = DB::table('reports_type')
+            ->select('reports_type.*')
+            ->get();
+        return view('admin.patient.create',['reports_type' => $reports_type]);
     }
     public function save(Request $requests){
         try {
             $data = $requests->all();
             $data['status'] = 1;
+            if ($data['report_type']) {
+                $data['report_type'] = json_encode($data['report_type']);
+            }else{
+                $data['report_type'] = '{}';
+            }
+
+            /*echo '<pre>';
+            print_r($data);
+            die();*/
             Patient::create($data);
             Flash::message('Hasta başarılı bir şekilde eklendi.','success');
             return $this->index();
@@ -81,8 +93,11 @@ class PatientController extends Controller
         try {
             $id = $requests->id;
             $patient = Patient::findOrFail($id);
-
-            return view('admin.patient.edit')->with(['patient' => $patient]);
+            $reports_type = DB::table('reports_type')
+                ->select('reports_type.*')
+                ->get();
+            $this_report_type = json_decode($patient->report_type);
+            return view('admin.patient.edit')->with(['patient' => $patient,'reports_type' => $reports_type, 'this_report_type' => $this_report_type]);
 
         } catch (\Exception $e) {
 
@@ -94,7 +109,16 @@ class PatientController extends Controller
         try {
             $id = $requests->id;
             $data = $requests->all();
-            Patient::find($id)->update($data);
+            if($data['report_type']){
+                $data['report_type'] = json_encode($data['report_type']);
+            }else{
+                $data['report_type'] = '{}';
+            }
+
+            /*echo '<pre>';
+            print_r($data);
+            die();*/
+            Patient::findOrFail($id)->update($data);
             Flash::message('Hasta Güncelleme İşlemi Başarılı','success');
             return $this->index();
         } catch (\Exception $e) {

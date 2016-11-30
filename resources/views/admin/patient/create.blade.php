@@ -90,6 +90,16 @@
                                     </div>
                                     <input class="form-control" type="text" name="educational">
                                 </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Rapor Türü
+                                    </div>
+                                    @if($reports_type)
+                                        @foreach($reports_type as $report)
+                                            <input type="checkbox" name="report_type[{{$report->id}}]" class="minimal"> {{$report->report_type}}
+                                            @endforeach
+                                    @endif
+                                </div>
                             </div><!-- /.box-body -->
                         </div><!-- /. box -->
                     </div><!-- /.col -->
@@ -145,7 +155,7 @@
                     <div class="col-sm-12">
                         <div class="box box-primary">
                             <div class="box-header with-border">
-                                <h3 class="box-title text-danger">Adres Bilgileri</h3>
+                                <h3 class="box-title text-danger">Veli Bilgileri</h3>
                             </div><!-- /.box-header -->
                             <div class="box-body">
                                 <div class="input-group form-group">

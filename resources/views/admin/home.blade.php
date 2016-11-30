@@ -10,7 +10,7 @@
     <small>Kontrol paneli</small>
   </h1>
   <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard active"></i> Anasayfa </a></li>
+    <li><a href="/admin/"><i class="fa fa-dashboard active"></i> Anasayfa </a></li>
   </ol>
 </section>
 
@@ -22,13 +22,13 @@
       <!-- small box -->
       <div class="small-box bg-aqua">
         <div class="inner">
-          <h3>150</h3>
-          <p>Öğrenciler</p>
+          <h3>{{count($patients)}}</h3>
+          <p>Kayıtlı Hasta</p>
         </div>
         <div class="icon">
-          <i class="ion ion-person"></i>
+          <i class="ion ion-medkit"></i>
         </div>
-        <a href="/tum-ogrenciler" class="small-box-footer">Tüm Öğrenciler <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="/admin/patient" class="small-box-footer">Tüm Hastalar <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
     <div class="col-lg-3 col-xs-6">
@@ -71,6 +71,77 @@
       </div>
     </div><!-- ./col -->
   </div><!-- /.row -->
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="box box-info">
+        <div class="box-header with-border">
+          <h3 class="box-title">Son Gönderilen Sms</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+              <tr>
+                <th>Tarih</th>
+                <th>Gönderilen Numara</th>
+                <th>Sms İçeriği</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                @foreach($last_sms as $sms)
+                  <td>{{$sms->created_at}}</td>
+                  <td>{{$sms->phone}}</td>
+                  <td><span>{{$sms->sms_detail}}</span></td>
+                @endforeach
+              </tr>
+              </tbody>
+            </table>
+          </div><!-- /.table-responsive -->
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+    <div class="col-sm-6">
+      <div class="box box-warning">
+        <div class="box-header with-border">
+          <h3 class="box-title">Son Kaydedilen Hasta</h3>
+          <div class="box-tools pull-right">
+            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+          </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+          <div class="table-responsive">
+            <table class="table no-margin">
+              <thead>
+              <tr>
+                <th>Ad - Soyad</th>
+                <th>Telefon</th>
+                <th>Tarih</th>
+                <th>Adres</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+                @foreach($last_patient as $patient)
+                  <td><a href="/admin/patient/edit/{{$patient->id}}">{{$patient->name}}</a></td>
+                  <td>{{$patient->tc_no}}</td>
+                  <td><span>{{$patient->created_at}}</span></td>
+                  <td><span>{{$patient->street.' '.$patient->district.' / '.$patient->city}}</span></td>
+                @endforeach
+              </tr>
+              </tbody>
+            </table>
+          </div><!-- /.table-responsive -->
+        </div><!-- /.box-body -->
+      </div><!-- /.box -->
+    </div>
+  </div>
   <!-- Main row -->
   <div class="row">
     <!-- Left col -->

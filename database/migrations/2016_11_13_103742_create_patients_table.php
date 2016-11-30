@@ -34,6 +34,7 @@ class CreatePatientsTable extends Migration
             $table->string('parent_phone');
             $table->integer('parent_kinship');
             $table->timestamps();
+            $table->string('report_type');
         });
     }
 

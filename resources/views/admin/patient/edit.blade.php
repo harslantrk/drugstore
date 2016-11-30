@@ -69,6 +69,24 @@
                                         <option value="7" @if($patient->social_insurance == 7) selected="selected" @endif>GSS (18 YAŞ ALTI, 1005 GAZİ (KIBRIS-KORE),İŞSİZLİK ÖD.60/G,60/D)</option>
                                     </select>
                                 </div>
+                                <div class="input-group form-group">
+                                    <div class="input-group-addon">
+                                        Rapor Türü
+                                    </div>
+                                    <?php $sayac=0; ?>
+                                    @foreach($reports_type as $report_type)
+                                        @foreach($this_report_type as $key=>$json)
+                                            @if($report_type->id == $key)
+                                                <?php $sayac++; ?>
+                                                <input type="checkbox" name="report_type[{{$report_type->id}}]" class="minimal" checked> {{ $report_type->report_type }}
+                                            @endif
+                                        @endforeach
+                                        @if($sayac==0)
+                                            <input type="checkbox" name="report_type[{{$report_type->id}}]" class="minimal"> {{ $report_type->report_type }}
+                                        @endif
+                                            <?php $sayac=0; ?>
+                                    @endforeach
+                                </div>
                                 <div class="box-header with-border">
                                     <h3 class="box-title text-danger">Adres Bilgileri</h3>
                                 </div><!-- /.box-header -->
