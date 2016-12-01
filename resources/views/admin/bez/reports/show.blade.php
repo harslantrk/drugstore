@@ -61,13 +61,10 @@
                             <h3 class="box-title">Raporlar</h3>
                             <span class="pull-right none-print">
                               <div class="btn-group-vertical">
-                                  <button type="button" class="btn btn-success" onclick="window.print()">
-                                      <i class="fa fa-print"></i>
-                                      Yazdır
-                                  </button>
                               </div>
                           </span>
-                            <button class="btn btn-primary pull-right none-print" data-toggle="modal" data-target="#modalYeniRapor" style="width: 20%; margin-right:20px;"><b>Yeni Rapor</b></button>
+                            <a href="{{URL::to('/admin/bez/reports/ExcelReport/'.$patient->id)}}" class="btn btn-success pull-right margin-r-5"><i class="fa fa-file-excel-o"></i> Excel Döküm</a>
+                            <button class="btn btn-primary pull-right none-print margin-r-5" data-toggle="modal" data-target="#modalYeniRapor"><b>Yeni Rapor Girişi Yap</b></button>
                         </div>
                         <div class="box-body no-padding">
                             <table class="table table-striped">

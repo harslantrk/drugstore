@@ -63,13 +63,13 @@
                                         Sosyal Güvence
                                     </div>
                                     <select class="form-control select2" name="social_insurance" style="width: 100%;">
-                                        <option selected="selected" value="1">SSK Çalışan</option>
-                                        <option value="2">SSK Emekli</option>
-                                        <option value="3">BAĞKUR Çalışan</option>
-                                        <option value="4">BAĞKUR Emekli</option>
-                                        <option value="5">EMEKLİ SANDIĞI (657 4/A) Çalışan</option>
-                                        <option value="6">EMEKLİ SANDIĞI Emekli</option>
-                                        <option value="7">GSS (18 YAŞ ALTI, 1005 GAZİ (KIBRIS-KORE),İŞSİZLİK ÖD.60/G,60/D)</option>
+                                        <option selected="selected">SSK Çalışan</option>
+                                        <option>SSK Emekli</option>
+                                        <option>BAĞKUR Çalışan</option>
+                                        <option>BAĞKUR Emekli</option>
+                                        <option>EMEKLİ SANDIĞI (657 4/A) Çalışan</option>
+                                        <option>EMEKLİ SANDIĞI Emekli</option>
+                                        <option>GSS (18 YAŞ ALTI, 1005 GAZİ (KIBRIS-KORE),İŞSİZLİK ÖD.60/G,60/D)</option>
                                     </select>
                                 </div>
                                 <div class="input-group form-group">
@@ -181,11 +181,11 @@
                                         Yakınlık Derecesi
                                     </div>
                                     <select class="form-control select2" name="parent_kinship" style="width: 100%;">
-                                        <option value="1"  selected="selected">Eşi</option>
-                                        <option value="2">Anne</option>
-                                        <option value="3">Baba</option>
-                                        <option value="4">Çocuğu</option>
-                                        <option value="5">Diğer</option>
+                                        <option selected="selected">Eşi</option>
+                                        <option>Anne</option>
+                                        <option>Baba</option>
+                                        <option>Çocuğu</option>
+                                        <option>Diğer</option>
                                     </select>
                                 </div>
                             </div>

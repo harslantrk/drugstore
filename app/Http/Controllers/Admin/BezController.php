@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Payment;
 use App\Receipt;
+use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -140,5 +141,43 @@ class BezController extends Controller
             ->get();
 
         return view('admin.bez.reports.paymentShow',['deleg'=>$this->sess,'patients' => $patient,'payments' => $payments,'receipts' => $receipts]);
+    }
+    public function ExcelReport($patient_id){
+
+        $patient = Patient::where('id',$patient_id)->get();
+        $reports = Report::where('patient_id',$patient_id)->get();
+
+        Excel::create($patient[0]->name.' - Raporları', function($excel) use($reports) {
+            $excel->sheet('Raporlar', function($sheet) use($reports) {
+
+                $row = 2;
+
+                $sheet->setAutoSize(true);
+                $sheet->cells('A1:C1', function($cells) {
+
+                    $cells->setBackground('#e69988');
+                    $cells->setFont(array(
+                        'family'     => 'Calibri',
+                        'size'       => '16',
+                        'bold'       =>  true
+                    ));
+                    $cells->setAlignment('center');
+                    //$cells->setBorder('solid', 'none', 'none', 'solid'); Çalışmıyor :/
+
+                });
+                $sheet->setBorder('A1:C1', 'thin');
+                $sheet->row(1,['Başlangıç Tarihi','Bitiş Tarihi','Rapor No']); // Sutun isimlerini Verme
+
+                foreach ($reports as $report){
+                    $sheet->row($row,[
+                        Carbon::parse($report->start_date)->format('d/m/Y'),
+                        Carbon::parse($report->finish_date)->format('d/m/Y'),
+                        $report->report_no
+                    ]);
+                    $row++;
+                }
+
+            });
+        })->export('xls');
     }
 }

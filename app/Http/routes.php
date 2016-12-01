@@ -301,6 +301,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/admin/bez/reports/show/{id}','Admin\BezController@show'); //Kullanıcının Raporlarını Listeleme
     Route::get('/admin/bez/reports/show/receipt/{report_id}/{patient_id}','Admin\BezController@receiptShow'); //Rapor İçindeki Reçeteleri Listeleme
     Route::get('/admin/bez/reports/show/receipt/payment/{receipt_id}/{patient_id}','Admin\BezController@paymentShow'); //Reçete İçindeki Ödemeleri Listeleme
+    Route::get('/admin/bez/reports/ExcelReport/{patient_id}','Admin\BezController@ExcelReport'); //Kullanıcının Raporlarını Listeleme
 
     Route::post('/admin/bez/reports/Reportsave','Admin\BezController@BezReportSave'); //Bez İçin Rapor Kaydetme
     Route::post('/admin/bez/reports/ReceiptSave','Admin\BezController@BezReceiptSave'); //Bez İçin Reçete Kaydetme

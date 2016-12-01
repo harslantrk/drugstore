@@ -60,13 +60,13 @@
                                         Sosyal Güvence
                                     </div>
                                     <select class="form-control select2" name="social_insurance" style="width: 100%;">
-                                        <option value="1" @if($patient->social_insurance == 1) selected="selected" @endif>SSK Çalışan</option>
-                                        <option value="2" @if($patient->social_insurance == 2) selected="selected" @endif>SSK Emekli</option>
-                                        <option value="3" @if($patient->social_insurance == 3) selected="selected" @endif>BAĞKUR Çalışan</option>
-                                        <option value="4" @if($patient->social_insurance == 4) selected="selected" @endif>BAĞKUR Emekli</option>
-                                        <option value="5" @if($patient->social_insurance == 5) selected="selected" @endif>EMEKLİ SANDIĞI (657 4/A) Çalışan</option>
-                                        <option value="6" @if($patient->social_insurance == 6) selected="selected" @endif>EMEKLİ SANDIĞI Emekli</option>
-                                        <option value="7" @if($patient->social_insurance == 7) selected="selected" @endif>GSS (18 YAŞ ALTI, 1005 GAZİ (KIBRIS-KORE),İŞSİZLİK ÖD.60/G,60/D)</option>
+                                        <option @if($patient->social_insurance == 'SSK Çalışan') selected="selected" @endif>SSK Çalışan</option>
+                                        <option @if($patient->social_insurance == 'SSK Emekli') selected="selected" @endif>SSK Emekli</option>
+                                        <option @if($patient->social_insurance == 'BAĞKUR Çalışan') selected="selected" @endif>BAĞKUR Çalışan</option>
+                                        <option @if($patient->social_insurance == 'BAĞKUR Emekli') selected="selected" @endif>BAĞKUR Emekli</option>
+                                        <option @if($patient->social_insurance == 'EMEKLİ SANDIĞI (657 4/A) Çalışan') selected="selected" @endif>EMEKLİ SANDIĞI (657 4/A) Çalışan</option>
+                                        <option @if($patient->social_insurance == 'EMEKLİ SANDIĞI Emekli') selected="selected" @endif>EMEKLİ SANDIĞI Emekli</option>
+                                        <option @if($patient->social_insurance == 'GSS (18 YAŞ ALTI, 1005 GAZİ (KIBRIS-KORE),İŞSİZLİK ÖD.60/G,60/D)') selected="selected" @endif>GSS (18 YAŞ ALTI, 1005 GAZİ (KIBRIS-KORE),İŞSİZLİK ÖD.60/G,60/D)</option>
                                     </select>
                                 </div>
                                 <div class="input-group form-group">
@@ -176,11 +176,11 @@
                                         Yakınlık Derecesi
                                     </div>
                                     <select class="form-control select2" name="parent_kinship" style="width: 100%;">
-                                        <option value="1" @if($patient->parent_kinship == 1) selected="selected" @endif>Eşi</option>
-                                        <option value="2" @if($patient->parent_kinship == 2) selected="selected" @endif>Anne</option>
-                                        <option value="3" @if($patient->parent_kinship == 3) selected="selected" @endif>Baba</option>
-                                        <option value="4" @if($patient->parent_kinship == 4) selected="selected" @endif>Çocuğu</option>
-                                        <option value="5" @if($patient->parent_kinship == 5) selected="selected" @endif>Diğer</option>
+                                        <option @if($patient->parent_kinship == 'Eşi') selected="selected" @endif>Eşi</option>
+                                        <option @if($patient->parent_kinship == 'Anne') selected="selected" @endif>Anne</option>
+                                        <option @if($patient->parent_kinship == 'Baba') selected="selected" @endif>Baba</option>
+                                        <option @if($patient->parent_kinship == 'Çocuğu') selected="selected" @endif>Çocuğu</option>
+                                        <option @if($patient->parent_kinship == 'Diğer') selected="selected" @endif>Diğer</option>
                                     </select>
                                 </div>
                             </div>

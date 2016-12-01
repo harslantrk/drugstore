@@ -35,13 +35,13 @@
       <!-- small box -->
       <div class="small-box bg-green">
         <div class="inner">
-          <h3>53</h3>
-          <p>Personeller</p>
+          <h3>{{$reports}}</h3>
+          <p>Hasta Raporu</p>
         </div>
         <div class="icon">
           <i class="ion ion-person"></i>
         </div>
-        <a href="/tum-personeller" class="small-box-footer">Personeller <i class="fa fa-arrow-circle-right"></i></a>
+        <a href="/admin/bez/reports/" class="small-box-footer">Tüm Hastalar <i class="fa fa-arrow-circle-right"></i></a>
       </div>
     </div><!-- ./col -->
     <div class="col-lg-3 col-xs-6">

@@ -10,4 +10,8 @@ class Report extends Model
     protected $fillable =[
       'patient_id','report_type','start_date','finish_date','report_no'
     ];
+    public function patient()
+    {
+        return $this->belongsTo('App\Patient');
+    }
 }

@@ -99,7 +99,7 @@
                         <div class="box-body no-padding">
                             <table class="table table-striped">
                                 <tbody>
-                                <tr>
+                                <tr class="bg-red-gradient">
                                     <th style="width: 10px">#</th>
                                     <th>Ödeme Tarihi</th>
                                     <th>Ödemeyi Yapan</th>
@@ -110,7 +110,7 @@
                                     $toplam = 0;
                                 ?>
                                 @foreach($payments as $payment)
-                                    <tr >
+                                    <tr class="bg-green-gradient">
                                         <td>{{$no}}</td>
                                         <td>{{\Carbon\Carbon::createFromFormat('Y-m-d H:i:s',$payment->payment_date)->format('d/m/Y')}}</td>
                                         <td>{{$payment->payment_person}}</td>

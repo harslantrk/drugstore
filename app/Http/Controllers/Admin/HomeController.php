@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Patient;
+use App\Report;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -21,9 +22,10 @@ class HomeController extends Controller
     }
     public function index()
     {
+        $reports = Report::all()->count();
         $last_sms = Sms::all()->sortByDesc('id')->take(1);//Son Gönderilen Sms'i Alma
         $last_patient = Patient::all()->sortByDesc('id')->take(1);//Son Gönderilen Sms'i Alma
         $patients = Patient::where('status',1)->get();
-        return view('admin.home',['patients' => $patients,'last_sms' => $last_sms,'last_patient' => $last_patient]);
+        return view('admin.home',['patients' => $patients,'last_sms' => $last_sms,'last_patient' => $last_patient,'reports' => $reports]);
     }
 }
