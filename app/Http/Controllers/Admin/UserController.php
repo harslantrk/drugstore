@@ -9,7 +9,6 @@ use Laracasts\Flash\Flash;
 use App\Http\Controllers\Controller;
 use App\Helpers\Helper;
 use Auth;
-use Image;
 
 class UserController extends Controller
 {
@@ -169,8 +168,7 @@ class UserController extends Controller
         $input['imagename'] = time().'.'.$image->getClientOriginalExtension();
 
         $destinationPath = public_path('/uploads/');
-        $img = Image::make($image->getRealPath());
-        $img->save($destinationPath.$input['imagename']);
+        $image->move($destinationPath,$input['imagename']);
 
         $user = User::findOrFail($request->id);
         $user->picture ='/uploads/'.$input['imagename'];

@@ -12,7 +12,7 @@ class CreateContactFormTable extends Migration
      */
     public function up()
     {
-        Schema::create('emc_contacts', function (Blueprint $table) {
+        Schema::create('contacts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('subject');
@@ -32,6 +32,6 @@ class CreateContactFormTable extends Migration
      */
     public function down()
     {
-        Schema::drop('emc_contacts');
+        Schema::drop('contacts');
     }
 }
