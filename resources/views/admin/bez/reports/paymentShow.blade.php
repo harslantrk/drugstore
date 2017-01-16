@@ -165,7 +165,8 @@
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="start_date">Reçete Seç</label>
-                                <input class="form-control" type="text" name="receipt_id" value="{{$receipt->detail}}" disabled>
+                                <input class="form-control" type="text" value="{{$receipt->detail}}" disabled>
+                                <input class="form-control" type="hidden" name="receipt_id" value="{{$receipt->id}}">
                             </div>
                             <div class="form-group">
                                 <label for="finish_date">Ödeme Tarihi</label>

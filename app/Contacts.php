@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Contacts extends Model
 {
-    protected $table="emc_contacts";
+    protected $table="contacts";
     protected $fillable = [
         'subject','email','phone','message','status','read',
     ];

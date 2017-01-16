@@ -698,6 +698,16 @@
           document.getElementById('kalan_karakter_2').innerHTML = kalan_karakter;
         }
       }
+      function hesaplama() {
+          var sum = document.getElementById('sum');
+          var quantity = document.getElementById('quantity');
+          var unit_price = document.getElementById('unit_price');
+          var total = document.getElementById('total');
+
+          sum.value =quantity.value * unit_price.value;
+          total.value = sum.value * 118/100;
+          //console.log(document.getElementById('quantity').value * document.getElementById('unit_price').value);
+      }
 
       $("#calendar").datepicker({
         language: 'tr'
