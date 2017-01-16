@@ -178,24 +178,41 @@
                             </div>
                             <div class="form-group">
                                 <label for="reportNo">Ödeme Tutarı</label>
-                                <input class="form-control" type="number" name="payment">
+                                <input class="form-control" type="number" id="kalanTutarTxt" name="payment" onkeyup="KalanKontrol()" value="{{$kalan}}" placeholder="Ödeme Tutarından Fazla Ödeme Yapılamaz !">
                             </div>
                         </div><!-- /.box-body -->
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
-                        <button type="submit" class="btn btn-primary">Ödemeyi Yap</button>
+                        <button type="submit" class="btn btn-primary" id="odemeYapBtn">Ödemeyi Yap</button>
                     </div>
                 </div><!-- /.modal-content -->
             </form>
         </div>
     </div><!-- /.modal -->
     <script type="text/javascript">
-        var sıfırMı = document.getElementById('kalanTutar').innerHTML;
+        var sıfırMı = {{$kalan}};
         if(sıfırMı == 0){
             document.getElementById('OdemeModalButon').setAttribute('disabled','');
             document.getElementById('OdemeModalButon').innerHTML = 'Ödeme Yapılamaz !'
         }
         console.log(document.getElementById('kalanTutar').innerHTML);
+
+        function KalanKontrol() {
+            var KalanTutar = {{$kalan}};
+            var kalanTutarTxt = $('#kalanTutarTxt').val();
+
+            //console.log('kontrol');
+            if(KalanTutar < kalanTutarTxt){
+                document.getElementById('odemeYapBtn').setAttribute('disabled','');
+                document.getElementById('odemeYapBtn').innerHTML = 'Geçersiz Tutar !';
+                //console.log(kalanTutarTxt +'--'+ KalanTutar);
+            }else{
+                document.getElementById('odemeYapBtn').removeAttribute('disabled');
+                document.getElementById('odemeYapBtn').innerHTML = 'Ödemeyi Yap';
+                /*console.log('o2');
+                console.log(kalanTutarTxt +'--'+ KalanTutar);*/
+            }
+        }
     </script>
 @endsection
