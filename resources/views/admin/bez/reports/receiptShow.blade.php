@@ -80,10 +80,7 @@
                             <h3 class="box-title">Reçeteler</h3>
                             <span class="pull-right none-print">
                               <div class="btn-group-vertical">
-                                  <button type="button" class="btn btn-success" onclick="window.print()">
-                                      <i class="fa fa-print"></i>
-                                      Yazdır
-                                  </button>
+                                  <a href="{{URL::to('/admin/bez/reports/ExcelReceipt/'.$patient->id.'/'.$report->id)}}" class="btn btn-success pull-right margin-r-5"><i class="fa fa-file-excel-o"></i> Excel Döküm</a>
                               </div>
                           </span>
                             <button class="btn btn-primary pull-right none-print" data-toggle="modal" data-target="#modalYeniRecete" style="width: 20%; margin-right:20px;"><b>Yeni Reçete</b></button>

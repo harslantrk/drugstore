@@ -180,4 +180,97 @@ class BezController extends Controller
             });
         })->export('xls');
     }
+
+    public function ExcelReceipt($patient_id,$report_id){
+        $patient = Patient::where('id',$patient_id)->get();
+        $receipts = Receipt::where('patient_id',$patient_id)->get();
+        $reports = Report::where('id',$report_id)->get();
+        foreach ($reports as $report) {
+        }
+        $report_no = $report->report_no;
+        /*echo '<pre>';
+        print_r($report);
+        die();*/
+        Excel::create($patient[0]->name.' - Reçeteleri', function($excel) use($receipts,$report_no) {
+            $excel->sheet('Reçeteler', function($sheet) use($receipts,$report_no) {
+
+                $row = 2;
+
+                $sheet->setAutoSize(true);
+                $sheet->cells('A1:H1', function($cells) {
+
+                    $cells->setBackground('#e69988');
+                    $cells->setFont(array(
+                        'family'     => 'Calibri',
+                        'size'       => '16',
+                        'bold'       =>  true
+                    ));
+                    $cells->setAlignment('center');
+                    //$cells->setBorder('solid', 'none', 'none', 'solid'); Çalışmıyor :/
+
+                });
+                $sheet->setBorder('A1:H1', 'thin');
+                $sheet->row(1,['Rapor No','Başlangıç Tarihi','Bitiş Tarihi','Açıklama','Adet','Adet Fiyat','Tutar','Genel Toplam',]); // Sutun isimlerini Verme
+
+                foreach ($receipts as $receipt){
+
+                    $sheet->row($row,[
+                        $report_no,
+                        Carbon::parse($receipt->start_date)->format('d/m/Y'),
+                        Carbon::parse($receipt->finish_date)->format('d/m/Y'),
+                        $receipt->detail,
+                        $receipt->quantity,
+                        $receipt->unit_price,
+                        $receipt->sum,
+                        $receipt->total
+                    ]);
+                    $row++;
+                }
+
+            });
+        })->export('xls');
+    }
+
+    public function ExcelPayment($patient_id,$receipt_id){
+        $patient = Patient::where('id',$patient_id)->get();
+        $payments = Payment::where('receipt_id',$receipt_id)->get();
+        /*echo '<pre>';
+        print_r($payments);
+        die();*/
+        Excel::create($patient[0]->name.' - Reçete Ödemeleri', function($excel) use($payments) {
+            $excel->sheet('Reçeteler', function($sheet) use($payments) {
+
+                $row = 2;
+
+                $sheet->setAutoSize(true);
+                $sheet->cells('A1:C1', function($cells) {
+
+                    $cells->setBackground('#e69988');
+                    $cells->setFont(array(
+                        'family'     => 'Calibri',
+                        'size'       => '16',
+                        'bold'       =>  true
+                    ));
+                    $cells->setAlignment('center');
+                    //$cells->setBorder('solid', 'none', 'none', 'solid'); Çalışmıyor :/
+
+                });
+                $sheet->setBorder('A1:C1', 'thin');
+                $sheet->row(1,['Ödeme Tarihi','Ödemeyi Yapan','Ödenen Tutar']); // Sutun isimlerini Verme
+                $total = 0;
+                foreach ($payments as $payment){
+
+                    $sheet->row($row,[
+                        Carbon::parse($payment->payment_date)->format('d/m/Y'),
+                        $payment->payment_person,
+                        $payment->payment
+                    ]);
+                    $total += $payment->payment;
+                    $row++;
+                }
+                $sheet->row($row + 1,['','Genel Toplam',$total]);
+
+            });
+        })->export('xls');
+    }
 }

@@ -88,10 +88,7 @@
                             <h3 class="box-title">Ödemeler</h3>
                             <span class="pull-right none-print">
                               <div class="btn-group-vertical">
-                                  <button type="button" class="btn btn-success" onclick="window.print()">
-                                      <i class="fa fa-print"></i>
-                                      Yazdır
-                                  </button>
+                                  <a href="{{URL::to('/admin/bez/reports/ExcelPayment/'.$patient->id.'/'.$receipt->id)}}" class="btn btn-success pull-right margin-r-5"><i class="fa fa-file-excel-o"></i> Excel Döküm</a>
                               </div>
                           </span>
                             <button id="OdemeModalButon" class="btn btn-primary pull-right none-print" data-toggle="modal" data-target="#modalYeniOdeme" style="width: 20%; margin-right:20px;"><b>Yeni Ödeme</b></button>
