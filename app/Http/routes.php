@@ -312,6 +312,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/admin/bez/reports/PaymentGetir','Admin\BezController@PaymentGetir'); //Ödeme İçin Reçete Getirme Ajax
 
     //Bez  Raporlar Bitiş
+
+    //Takvim işlemleri
+
+    Route::get('/admin/calendar','Admin\CalendarController@index'); //Kullanıcının Reçetelerini Listeleme
+    Route::get('admin/calendar/api', function () {
+        $events = DB::table('events')->select('id', 'user_id', 'title', 'start_time as start', 'end_time as end')->get();
+
+        return $events;
+    });
+
+    Route::post('/admin/calendar/createCalendarModalShow','Admin\CalendarController@createCalendarModalShow'); //Reçete İçin Raporları Getirme Ajax
+    Route::post('/admin/calendar/calendarModalSave','Admin\CalendarController@calendarModalSave');
+    //Takvim Bitiş
 });
 
 
