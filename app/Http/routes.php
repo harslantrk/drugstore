@@ -324,6 +324,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::post('/admin/calendar/createCalendarModalShow','Admin\CalendarController@createCalendarModalShow'); //Reçete İçin Raporları Getirme Ajax
     Route::post('/admin/calendar/calendarModalSave','Admin\CalendarController@calendarModalSave');
+    Route::post('/admin/calendar/editModal','Admin\CalendarController@editModal');
     //Takvim Bitiş
 });
 

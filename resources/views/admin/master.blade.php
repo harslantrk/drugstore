@@ -38,7 +38,8 @@
     <!-- Select2 -->
     <link rel="stylesheet" href="{{URL::to('/plugins/select2/select2.min.css')}}">
       <link href="{{URL::to('/css/file/fileinput.css')}}" media="all" rel="stylesheet" type="text/css" />
-      <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <link rel="stylesheet" href="{{URL::to('/css/myedit.css')}}">
+    <script src="/plugins/jQuery/jQuery-2.1.4.min.js"></script>
       <script src="/plugins/file/fileinput.js" type="text/javascript"></script>
       <!-- DataTables Bootstrap-->
       <link rel="stylesheet" href="/plugins/datatables/dataTables.bootstrap.css">
@@ -569,7 +570,6 @@
         </section>
         <!-- /.sidebar -->
       </aside>
-
       @yield('content')
       <footer class="main-footer">
         <div class="pull-right hidden-xs">

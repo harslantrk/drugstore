@@ -28,11 +28,11 @@ class CalendarController extends Controller
     {
         $now = Carbon::now();
         $user_id = Auth::user()->id;
-        $calendars = CalendarEvent::where('user_id',$user_id)->where('start_time','>=',$now)->get();
+        $calendars = CalendarEvent::where('user_id',$user_id)->where('start_time','>=',$now)->orderby('start_time','asc')->get();
         /*echo '<pre>';
         print_r($calendars);
         die();*/
-        return view('admin.calendar.index',['calendars'=>$calendars]);
+        return view('admin.calendar.index',['calendars'=>$calendars,'deleg'=>$this->sess]);
     }
 
     public function createCalendarModalShow()
@@ -59,21 +59,15 @@ class CalendarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function editModal(Request $request)
     {
-        $event = CalendarEvent::findOrFail($id);
-
-        $first_date = new DateTime($event->start_time);
-        $second_date = new DateTime($event->end_time);
-        $difference = $first_date->diff($second_date);
-
-        $data = [
-            'page_title' 	=> $event->title,
-            'event'			=> $event,
-            'duration'		=> $this->format_interval($difference)
-        ];
-
-        return view('event/view', $data);
+        $data = $request->all();
+        $events = CalendarEvent::findOrFail($data['event_id']);
+        /*echo '<pre>';
+        echo $events->id;
+        print_r($events);
+        die();*/
+        return view('admin.calendar.editModal', ['events' => $events]);
     }
 
     /**
